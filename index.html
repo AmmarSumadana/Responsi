@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persebaran Rumah Makan Khas Sulawesi di Yogyakarta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            /* Mengatur tinggi body agar memenuhi viewport */
+            background-image: url('images/background.jpg');
+            /* Ganti dengan path gambar Anda */
+            background-size: cover;
+            /* Mengatur gambar agar menutupi seluruh area */
+            background-position: center;
+        }
+
+
+        /* Navbar */
+        nav {
+            background-image:
+                linear-gradient(rgba(7, 87, 91, 0.3), rgba(7, 87, 91, 0.5)),
+                /* Lapisan warna transparan */
+                url('images/header.jpeg');
+            /* Gambar latar belakang */
+            background-size: cover;
+            /* Mengatur ukuran gambar agar menutupi seluruh area */
+            background-position: center;
+            /* Mengatur posisi gambar di tengah */
+            padding: 10px;
+            /* Padding untuk navbar */
+        }
+
+
+        .navbar-brand,
+        .nav-link {
+            color: black !important;
+
+        }
+
+        .nav-link:hover {
+            color: #ffffff !important;
+            /* Yellow text on hover */
+        }
+
+        .text-justify {
+            text-align: justify;
+            /* Mengatur perataan teks menjadi justify */
+        }
+
+        .card {
+            margin: 10px;
+            /* Memberikan jarak antar card */
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            /* Remove default border */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            /* Add shadow on hover */
+        }
+
+        .img-fluid {
+            border-radius: 10px;
+            height: 200px;
+            /* Set a fixed height for uniformity */
+            object-fit: cover;
+            /* Ensure the image covers the area */
+        }
+
+        .section-title {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+        footer {
+            background-image:
+                linear-gradient(rgba(7, 87, 91, 0.3), rgba(7, 87, 91, 0.5)),
+                /* Lapisan warna transparan */
+                url('images/header.jpeg');
+            /* Gambar latar belakang */
+            color: black;
+            /* Warna teks footer */
+            padding: 1px 1px;
+            /* Padding atas dan bawah */
+            text-align: center;
+            /* Teks rata tengah */
+        }
+
+        /* Custom styles for interactive elements */
+        .btn-custom {
+            background-color: #66A5AD;
+            /* Custom button color */
+            color: #ffffff;
+        }
+
+        .btn-custom:hover {
+            background-color: #66A5AD;
+            /* Darker blue on hover */
+        }
+
+        .carousel-item {
+            padding: 20px;
+            /* Memberikan jarak di sekitar item carousel */
+        }
+
+        .card-body {
+            display: flex;
+            /* Menggunakan flexbox */
+            flex-direction: column;
+            /* Mengatur arah flex menjadi kolom */
+            justify-content: space-between;
+            /* Memberikan ruang di antara elemen */
+            height: 100%;
+            /* Membuat card-body mengisi tinggi card */
+        }
+
+        .button-group {
+            display: flex;
+            /* Menggunakan flexbox untuk button group */
+            justify-content: center;
+            /* Memposisikan tombol di tengah */
+            gap: 10px;
+            /* Jarak antara tombol */
+            margin-top: auto;
+            /* Memastikan button group berada di bagian bawah card-body */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Kuliner Sulawesi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="data_kuliner.html">Data Kuliner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map.html">Peta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="info.html">Profile Pembuat</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="text-center">
+            <h2 class="section-title">Persebaran Rumah Makan Khas Sulawesi di Yogyakarta</h2>
+        </div>
+        <div class="text-justify">
+            <p>Kuliner Sulawesi di Jogja menawarkan pengalaman gastronomi yang kaya dan beragam, mencerminkan keunikan
+                budaya serta tradisi masyarakat Sulawesi. Meskipun Jogja terkenal dengan masakan khas Jawa, kehadiran
+                kuliner Sulawesi di kota ini semakin memperkaya pilihan kuliner bagi para pecinta makanan. Berbagai
+                restoran dan warung yang menyajikan hidangan khas Sulawesi kini dapat ditemukan di berbagai sudut kota,
+                membawa cita rasa autentik yang sulit ditolak.</p>
+            <p>Salah satu kuliner ikonik dari Sulawesi yang banyak diminati adalah Coto Makassar. Hidangan ini merupakan
+                sup daging sapi yang kaya rasa dan memiliki aroma rempah yang khas. Coto Makassar terbuat dari daging
+                sapi, jeroan, dan bumbu-bumbu seperti ketumbar, kayu manis, dan daun jeruk. Proses memasaknya yang lama
+                membuat daging menjadi empuk dan bumbu meresap dengan sempurna. Di Jogja, beberapa restoran menyajikan
+                Coto Makassar dengan nasi putih hangat dan sambal sebagai pelengkap, menjadikannya hidangan yang sangat
+                menggugah selera.</p>
+            <p>Selain Coto Makassar, Sop Konro juga menjadi favorit di kalangan pecinta kuliner Sulawesi. Sop ini
+                terbuat dari iga sapi yang dimasak dengan bumbu rempah khas, memberikan rasa yang gurih dan lezat. Sop
+                Konro biasanya disajikan dengan nasi dan irisan daun bawang, serta taburan bawang goreng di atasnya. Di
+                Jogja, Anda dapat menemukan beberapa tempat yang menawarkan Sop Konro dengan cita rasa yang tidak kalah
+                dengan yang ada di Sulawesi. Hidangan ini sering kali menjadi pilihan utama bagi mereka yang ingin
+                merasakan kehangatan dan kelezatan masakan Sulawesi.</p>
+            <p>
+                Pallubasa, masakan lain yang tak kalah menarik, juga dapat ditemukan di Jogja. Pallubasa merupakan
+                hidangan daging yang dimasak dengan kuah santan yang kental dan bumbu rempah yang kaya. Cita rasanya
+                yang gurih dan sedikit pedas membuat Pallubasa menjadi salah satu pilihan yang patut dicoba. Biasanya,
+                Pallubasa disajikan dengan ketupat atau nasi, menjadikannya hidangan yang mengenyangkan. Di beberapa
+                restoran di Jogja, Pallubasa disajikan dengan pelengkap seperti emping dan sambal, menambah kenikmatan
+                saat menyantapnya. Tak hanya itu, kuliner Sulawesi di Jogja juga menyajikan berbagai hidangan laut yang
+                segar, mengingat
+                Sulawesi memiliki garis pantai yang panjang dan kaya akan hasil laut.
+            </p>
+            <p>Selamat menjelajahi dan menikmati kuliner khas Sulawesi yang tersedia di Yogyakarta!</p>
+            <a href="#restaurantCarousel" class="btn btn-custom">Jelajahi Kuliner Sulawesi</a>
+        </div>
+
+        <div id="restaurantCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="card">
+                                <img src="images/CotoMakassar.jpeg" class="img-fluid" alt="Coto Makassar">
+                                <div class="card-body">
+                                    <h5 class="card-title">Coto Makassar</h5>
+                                    <p class="description">Masakan khas Makassar yang terbuat dari daging sapi dan
+                                        jeroan yang dimasak dengan bumbu khas.</p>
+                                    <div class="button-group">
+                                        <a href="#" class="btn btn-custom">Detail</a>
+                                        <a href="map.html" class="btn btn-custom">Lihat Peta</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="card">
+                                <img src="images/SopKonro.jpeg" class="img-fluid" alt="Sop Konro">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sop Konro</h5>
+                                    <p class="description">Sop daging iga sapi yang dimasak dengan bumbu rempah khas
+                                        Sulawesi, Daging yang gurih dan kuah yang nikmat.</p>
+                                    <div class="button-group">
+                                        <a href="#" class="btn btn-custom">Detail</a>
+                                        <a href="map.html" class="btn btn-custom">Lihat Peta</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="card">
+                                <img src="images/Pallubasa.jpeg" class="img-fluid" alt="Pallubasa">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pallubasa</h5>
+                                    <p class="description">Disajikan menggunakan jeroan yang direbus lebih lama dan
+                                        ditambahkan kelapa parut yang disangrai, kuah yang kental dan gurih.
+                                    </p>
+                                    <div class="button-group">
+                                        <a href="#" class="btn btn-custom">Detail</a>
+                                        <a href="map.html" class="btn btn-custom">Lihat Peta</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="card">
+                                <img src="images/buras.jpeg" class="img-fluid" alt="Pallubasa">
+                                <div class="card-body">
+                                    <h5 class="card-title">Buras</h5>
+                                    <p class="description">Makanan yang terbuat dari beras yang dimasak dengan santan
+                                        dan biasanya dijadikan sebagai makanan pendamping untuk hidangan berkuah.
+                                    </p>
+                                    <div class="button-group">
+                                        <a href="#" class="btn btn-custom">Detail</a>
+                                        <a href="map.html" class="btn btn-custom">Lihat Peta</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="card">
+                                <img src="images/Barongko.jpg" class="img-fluid" alt="Pallubasa">
+                                <div class="card-body">
+                                    <h5 class="card-title">Barongko</h5>
+                                    <p class="description">Kue tradisional yang terbuat dari pisang dan santan,
+                                        dibungkus daun pisang dan dikukus serta sering dinikmati sebagai pencuci mulut.
+                                    </p>
+                                    <div class="button-group">
+                                        <a href="#" class="btn btn-custom">Detail</a>
+                                        <a href="map.html" class="btn btn-custom">Lihat Peta</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="card">
+                                <img src="images/EsPisangIjo.jpeg" class="img-fluid" alt="Pallubasa">
+                                <div class="card-body">
+                                    <h5 class="card-title">Es Pisang Ijo</h5>
+                                    <p class="description">Pisang Ijo biasanya disajikan dengan sirup gula merah yang
+                                        manis dan kental, serta santan kental yang memberikan rasa gurih.
+                                    </p>
+                                    <div class="button-group">
+                                        <a href="#" class="btn btn-custom">Detail</a>
+                                        <a href="map.html" class="btn btn-custom">Lihat Peta</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tambahkan lebih banyak carousel-item jika diperlukan -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#restaurantCarousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#restaurantCarousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+
+    </div>
+
+    <footer>
+        <br>WebGIS Kuliner Khas Sulawesi By</br>
+        Muhammad Ammar Sumadana - 23/514479/SV/22362 <br>
+        Ikuti kami di:
+        <a href="https://www.instagram.com/damarwijaya.s/profilecard/?igsh=bTlvdXo0cnZ2NTBl" target="_blank"
+            class="instagram-link">@damarwijaya.s</a>
+        </p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

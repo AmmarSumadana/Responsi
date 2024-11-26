@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Persebaran Rumah Makan Khas Sulawesi di Yogyakarta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            /* Mengatur tinggi body agar memenuhi viewport */
+            background-image: url('images/background.jpg');
+            /* Ganti dengan path gambar Anda */
+            background-size: cover;
+            /* Mengatur gambar agar menutupi seluruh area */
+            background-position: center;
+        }
+
+        /* Navbar */
+        nav {
+            background-image:
+                linear-gradient(rgba(7, 87, 91, 0.3), rgba(7, 87, 91, 0.5)),
+                /* Lapisan warna transparan */
+                url('images/header.jpeg');
+            /* Gambar latar belakang */
+            background-size: cover;
+            /* Mengatur ukuran gambar agar menutupi seluruh area */
+            background-position: center;
+            /* Mengatur posisi gambar di tengah */
+            padding: 10px;
+            /* Padding untuk navbar */
+        }
+
+
+        .navbar-brand,
+        .nav-link {
+            color: black !important;
+
+        }
+
+        .nav-link:hover {
+            color: #ffffff !important;
+            /* Yellow text on hover */
+        }
+
+        #map {
+            height: 700px;
+            width: 100%;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 20px;
+            /* Add margin for spacing */
+        }
+
+        .section-title {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        footer {
+            background-image:
+                linear-gradient(rgba(7, 87, 91, 0.3), rgba(7, 87, 91, 0.5)),
+                /* Lapisan warna transparan */
+                url('images/header.jpeg');
+            /* Gambar latar belakang */
+            color: black;
+            /* Warna teks footer */
+            padding: 1px 1px;
+            /* Padding atas dan bawah */
+            text-align: center;
+            /* Teks rata tengah */
+            margin-top: 20px
+        }
+    </style>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Kuliner Sulawesi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="data_kuliner.html">Data Kuliner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map.html">Peta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="info.html">Profile Pembuat</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="section-title">Peta Persebaran Rumah Makan Khas Sulawesi di Yogyakarta</h2>
+            </div>
+        </div>
+
+        <div id="map"></div>
+
+        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+        <script>
+            /* Initial Map */
+            var map = L.map('map').setView([-7.791612104905112, 110.36301249569213], 12); //lat, long, zoom
+
+            /* Tile Basemap */
+            var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            });
+            basemap1.addTo(map);
+
+            // Mengambil data wisata dari file JSON
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Menambahkan marker untuk setiap lokasi wisata
+                    data.forEach(item => {
+                        L.marker([item.lat, item.lon]).addTo(map)
+                            .bindPopup('<strong>' + item.nama + '</strong><br>' + item.lat + '</strong><br>' + item.lon);
+                    });
+                })
+                .catch(error => console.error('Error loading the data:', error));
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer>
+    <br>WebGIS Kuliner Khas Sulawesi By</br>
+    Muhammad Ammar Sumadana - 23/514479/SV/22362 <br>
+    Ikuti kami di:
+    <a href="https://www.instagram.com/damarwijaya.s/profilecard/?igsh=bTlvdXo0cnZ2NTBl" target="_blank"
+        class="instagram-link">@damarwijaya.s</a>
+    </p>
+</footer>
+</html>

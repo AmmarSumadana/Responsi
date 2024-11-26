@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuliner Khas Sulawesi - Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #C4DFE6;
+            margin: 0;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        nav {
+            background-image:
+                linear-gradient(rgba(7, 87, 91, 0.3), rgba(7, 87, 91, 0.5)),
+                /* Lapisan warna transparan */
+                url('images/header.jpeg');
+            /* Gambar latar belakang */
+            background-size: cover;
+            /* Mengatur ukuran gambar agar menutupi seluruh area */
+            background-position: center;
+            /* Mengatur posisi gambar di tengah */
+            padding: 10px;
+            /* Padding untuk navbar */
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: black !important;
+        }
+
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+        .container {
+            flex: 1;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .table-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-image:
+                linear-gradient(rgba(7, 87, 91, 0.3), rgba(7, 87, 91, 0.5)),
+                /* Lapisan warna transparan */
+                url('images/header.jpeg');
+            /* Gambar latar belakang */
+            color: black;
+            /* Warna teks footer */
+            padding: 1px 1px;
+            /* Padding atas dan bawah */
+            text-align: center;
+            /* Teks rata tengah */
+        }
+    </style>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Kuliner Sulawesi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="data_kuliner.html">Data Kuliner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map.html">Peta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="info.html">Profile Pembuat</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="section-title">Data Kuliner Sulawesi</h2>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead class="table">
+                    <tr>
+                        <th>Rumah Makan</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                    <tbody id="data-table-body">
+                        <!-- Data akan dimuat di sini -->
+                    </tbody>
+                </table>
+                <button onclick="tambahData()" class="btn btn-success mb-3">Tambah Data Baru</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Fungsi untuk memuat data dari localStorage atau data.json
+        const loadData = async () => {
+            let data = localStorage.getItem('kulinerId');
+
+            if (!data) {
+                try {
+                    const response = await fetch('data.json');
+                    data = await response.json();
+                    localStorage.setItem('kulinerId', JSON.stringify(data));
+                } catch (error) {
+                    console.error('Error fetching the data:', error);
+                    data = [];
+                }
+            } else {
+                data = JSON.parse(data);
+            }
+
+            displayData(data);
+        };
+
+        // Fungsi untuk menampilkan data dalam tabel
+        const displayData = (data) => {
+            const tableBody = document.getElementById('data-table-body');
+            tableBody.innerHTML = '';
+
+            data.forEach((item, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+            <td>${item.nama}</td>
+            <td>${item.lat}</td>
+            <td>${item.lon}</td>
+            <td>
+                <button class="btn btn-warning btn-sm" onclick="editData(${index})">Edit</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteData(${index})">Delete</button>
+            </td>
+        `;
+                tableBody.appendChild(row);
+            });
+        };
+
+        // Fungsi untuk mengedit data
+        const editData = (index) => {
+            // Ambil data dari localStorage
+            let data = JSON.parse(localStorage.getItem('kulinerId'));
+
+            // Buat form edit di modal
+            const modal = `
+        <div class="modal fade" id="editModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Data Kuliner</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm">
+                            <div class="mb-3">
+                                <label class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="editNama" value="${data[index].nama}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Latitude</label>
+                                <input type="number" step="any" class="form-control" id="editLat" value="${data[index].lat}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Longitude</label>
+                                <input type="number" step="any" class="form-control" id="editLon" value="${data[index].lon}" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+            // Tambahkan modal ke body
+            document.body.insertAdjacentHTML('beforeend', modal);
+
+            // Inisialisasi modal Bootstrap
+            const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+            editModal.show();
+
+            // Tambahkan event listener untuk form submit
+            document.getElementById('editForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Ambil nilai baru dari form
+                data[index].nama = document.getElementById('editNama').value;
+                data[index].lat = parseFloat(document.getElementById('editLat').value);
+                data[index].lon = parseFloat(document.getElementById('editLon').value);
+
+                // Simpan kembali ke localStorage
+                localStorage.setItem('kulinerId', JSON.stringify(data));
+
+                // Tutup modal
+                editModal.hide();
+
+                // Perbarui tampilan tabel
+                displayData(data);
+
+                // Hapus modal dari DOM
+                document.getElementById('editModal').remove();
+            });
+        };
+
+        // Fungsi untuk menghapus data
+        const deleteData = (index) => {
+            // Konfirmasi penghapusan
+            if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                // Ambil data dari localStorage
+                let data = JSON.parse(localStorage.getItem('kulinerId'));
+
+                // Hapus item pada index tertentu
+                data.splice(index, 1);
+
+                // Simpan kembali ke localStorage
+                localStorage.setItem('kulinerId', JSON.stringify(data));
+
+                // Perbarui tampilan tabel
+                displayData(data);
+            }
+        };
+
+        // Fungsi untuk menambah data baru
+        const tambahData = () => {
+            // Ambil data dari localStorage
+            let data = JSON.parse(localStorage.getItem('kulinerId'));
+
+            // Buat form tambah di modal
+            const modal = `
+        <div class="modal fade" id="tambahModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tambah Data Kuliner Baru</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="tambahForm">
+                            <div class="mb-3">
+                                <label class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="tambahNama" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Latitude</label>
+                                <input type="number" step="any" class="form-control" id="tambahLat" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Longitude</label>
+                                <input type="number" step="any" class="form-control" id="tambahLon" required>
+                            </div>
+                            <button type="submit" class="btn btn-success">Simpan Data Baru</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+            // Tambahkan modal ke body
+            document.body.insertAdjacentHTML('beforeend', modal);
+
+            // Inisialisasi modal Bootstrap
+            const tambahModal = new bootstrap.Modal(document.getElementById('tambahModal'));
+            tambahModal.show();
+
+            // Tambahkan event listener untuk form submit
+            document.getElementById('tambahForm').addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Buat objek data baru
+                const newData = {
+                    nama: document.getElementById('tambahNama').value,
+                    lat: parseFloat(document.getElementById('tambahLat').value),
+                    lon: parseFloat(document.getElementById('tambahLon').value)
+                };
+
+                // Tambahkan data baru ke array
+                data.push(newData);
+
+                // Simpan kembali ke localStorage
+                localStorage.setItem('kulinerId', JSON.stringify(data));
+
+                // Tutup modal
+                tambahModal.hide();
+
+                // Perbarui tampilan tabel
+                displayData(data);
+
+                // Hapus modal dari DOM
+                document.getElementById('tambahModal').remove();
+            });
+        };
+
+        // Panggil fungsi loadData saat halaman dimuat
+        loadData();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer>
+    <br>WebGIS Kuliner Khas Sulawesi By</br>
+    Muhammad Ammar Sumadana - 23/514479/SV/22362 <br>
+    Ikuti kami di:
+    <a href="https://www.instagram.com/damarwijaya.s/profilecard/?igsh=bTlvdXo0cnZ2NTBl" target="_blank"
+        class="instagram-link">@damarwijaya.s</a>
+</footer>
+</html>

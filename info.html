@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Pembuat - WebGIS Kuliner Sulawesi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #C4DFE6;
+            margin: 0;
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        nav {
+            background-image: linear-gradient(rgba(7, 87, 91, 0.3), rgba(7, 87, 91, 0.5)), url('images/header.jpeg');
+            background-size: cover;
+            background-position: center;
+            padding: 10px;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: black !important;
+        }
+
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
+
+        .profile-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            color: #07575B;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #4CAF50;
+        }
+
+        footer {
+            background-image: linear-gradient(rgba(7, 87, 91, 0.3), rgba(7, 87, 91, 0.5)), url('images/header.jpeg');
+            color: black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .profile-image {
+                height: 400px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .text-justify {
+            text-align: justify;
+            /* Mengatur perataan teks menjadi justify */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Kuliner Sulawesi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="data_kuliner.html">Data Kuliner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map.html">Peta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="info.html">Info Pembuat</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <div class="container flex-grow-1 py-5">
+        <div class="profile-container">
+            <div class="row">
+                <div class="col-md-5">
+                    <img src="images/profile.jpg" alt="Foto Profil Muhammad Ammar Sumadana" class="profile-image">
+                </div>
+                <div class="col-md-7">
+                    <div class="profile-info">
+                        <h2 class="mb-3">Muhammad Ammar Sumadana</h2>
+                        <p class="mb-4">
+                            <strong>NIM:</strong> 23/514479/SV/22362<br>
+                            <strong>Program Studi:</strong> Sistem Informasi Geografis<br>
+                            <strong>Universitas:</strong> Universitas Gadjah Mada<br>
+                            <strong>Angkatan:</strong> 2023
+                        </p>
+
+                        <div class="contact-info mb-4">
+                            <h4>Kontak</h4>
+                            <p>
+                                <i class="bi bi-envelope-fill me-2"></i> @mail.ugm.ac.id<br>
+                                <i class="bi bi-telephone-fill me-2"></i> +62***********
+                            </p>
+                        </div>
+
+                        <div class="social-media">
+                            <h4>Sosial Media</h4>
+                            <div class="social-links">
+                                <a href="https://www.instagram.com/damarwijaya.s/" target="_blank" class="social-icon"
+                                    title="Instagram">
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+                                <a href="https://github.com/AmmarSumadana" target="_blank" class="social-icon"
+                                    title="GitHub">
+                                    <i class="bi bi-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/muhammad-ammar-sumadana-386a1b33a/" target="_blank"
+                                    class="social-icon" title="LinkedIn">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="about-me mt-4 text-justify">
+                            <h4>Tentang Saya</h4>
+                            <p>
+                                Saya adalah mahasiswa Sistem Informasi Geografis yang memiliki passion di bidang
+                                pengembangan web, data visualization, pemetaan dan teknologi informasi. Proyek
+                                WebGIS Kuliner Sulawesi ini merupakan bagian dari eksplorasi saya
+                                terhadap potensi digital dalam mempromosikan kekayaan kuliner Indonesia.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>WebGIS Kuliner Khas Sulawesi | Muhammad Ammar Sumadana</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
